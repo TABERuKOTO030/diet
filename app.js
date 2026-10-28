@@ -94,12 +94,12 @@ function bottle(ml,goal){
   const p=Math.min(1,ml/goal);const y=150-p*112;
   return `<div class="bottle" role="img" aria-label="今日饮水 ${ml} 毫升，目标 ${goal} 毫升"><svg viewBox="0 0 100 160">
   <defs><clipPath id="bclip"><path d="M30 34h40v10c10 6 16 14 16 28v70a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V72c0-14 6-22 16-28z"/></clipPath>
-  <linearGradient id="milk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9F5EF"/><stop offset="1" stop-color="#BFE0D1"/></linearGradient></defs>
+  <linearGradient id="milk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD3F5"/><stop offset="1" stop-color="#9FD3F5"/></linearGradient></defs>
   <path d="M30 34h40v10c10 6 16 14 16 28v70a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V72c0-14 6-22 16-28z" fill="#fff" fill-opacity=".75"/>
   <g clip-path="url(#bclip)"><g class="wave" style="transform:translateY(${y}px)"><path d="M-100 6 q12.5 -8 25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 t25 0 V200 H-100z" fill="url(#milk)"/></g></g>
-  <path d="M30 34h40v10c10 6 16 14 16 28v70a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V72c0-14 6-22 16-28z" fill="none" stroke="#C9D8D2" stroke-width="2"/>
+  <path d="M30 34h40v10c10 6 16 14 16 28v70a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V72c0-14 6-22 16-28z" fill="none" stroke="#BFDDF2" stroke-width="2"/>
   <path d="M27 14h46v20H27z" rx="4" fill="#8E9AA6"/><path d="M27 30q5.75 6 11.5 0t11.5 0 11.5 0 11.5 0v4H27z" fill="#8E9AA6"/>
-  <rect x="34" y="96" width="32" height="14" rx="3" fill="#fff" stroke="#DCE6E1"/><text x="50" y="106" text-anchor="middle" font-size="7.5" fill="#8BA79B" font-family="QLatin">MILK</text>
+  <rect x="34" y="96" width="32" height="14" rx="3" fill="#fff" stroke="#D6E8F5"/><text x="50" y="106" text-anchor="middle" font-size="7.5" fill="#5C8DB3" font-family="QLatin">MILK</text>
   </svg><div class="bottle-num"><b class="num">${ml}</b><small>/ ${goal} ml</small></div></div>`;
 }
 function biscuit(inner,cls){return `<div class="bwrap ${cls||''}"><div class="biscuit">${inner}</div></div>`}
@@ -112,9 +112,9 @@ const views={};
 views.home=()=>{
   const g=targets(),t=dayTotals(today()),net=t.kcal-t.ex,left=g.kcal-net,tip=window.TIPS[(new Date().getDate()+new Date().getMonth()*31)%window.TIPS.length];
   const p=S.db.profile;const st=streak();
-  return `<header class="hero">
+  return `<header class="hero"><span class="script hero-s">Light day</span>
     <div class="hero-l"><span class="ticket">No.${pad(new Date().getDate())} · A light day</span>
-    <h1 class="hz big">${esc(p.name||'你')}的今日</h1><p class="muted">${fmtDay(today())} ${deco.dots}</p></div>
+    <h1 class="hz big">${esc(p.name||'你')}的今日</h1><p class="muted">${fmtDay(today())}</p></div>
     <div class="sticker" title="连续记录"><span class="num">${st}</span><small>DAYS</small><em>连续记录</em></div></header>
   ${biscuit(`<div class="kcal-row">${ring(Math.max(0,left),g.kcal,168,left>=0?r(left):'+'+r(-left),left>=0?'还可以吃 kcal':'已超出 kcal')}
     <ul class="kcal-list"><li><span class="lg-dot c1"></span>摄入<b class="num">${r(t.kcal)}</b></li><li><span class="lg-dot c2"></span>运动<b class="num">−${r(t.ex)}</b></li><li><span class="lg-dot c3"></span>目标<b class="num">${g.kcal}</b></li></ul></div>
@@ -296,7 +296,7 @@ function openEx(){
 const NAV=[['home','今日','M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-5h-6v5H5a1 1 0 0 1-1-1z'],['log','记录','M7 4h10a2 2 0 0 1 2 2v13l-3-2-2 2-2-2-2 2-2-2-3 2V6a2 2 0 0 1 2-2zM9 9h6M9 13h4'],['analysis','分析','M5 19V11M10 19V6M15 19v-5M20 19V9'],['weight','体重','M5 7h14l-1.5 11a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2zM9 11l3 2 3-3'],['assistant','助手','M5 6h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-6l-4 3v-3H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zM9 11.5h.01M12 11.5h.01M15 11.5h.01'],['tips','Tips','M12 3a6 6 0 0 1 3.5 10.9V17h-7v-3.1A6 6 0 0 1 12 3zM9.5 20.5h5'],['me','我的','M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0']];
 const ico=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
 function shell(){
-  $('#app').innerHTML=`<aside class="side"><div class="brand"><span class="brand-m">轻盈日记</span><small class="en">SOFT DAYS · ${S.DEMO?'demo':'diary'}</small></div><nav>${NAV.map(([k,n,d])=>`<a href="#${k}" data-r="${k}">${ico(d)}<span>${n}</span></a>`).join('')}</nav><div class="side-f">${deco.squig}<p>Perfect for<br>a lighter day.</p></div></aside>
+  $('#app').innerHTML=`<aside class="side"><div class="brand"><span class="brand-m">轻盈日记</span><small class="en">SOFT DAYS · ${S.DEMO?'demo':'diary'}</small></div><nav>${NAV.map(([k,n,d])=>`<a href="#${k}" data-r="${k}">${ico(d)}<span>${n}</span></a>`).join('')}</nav><div class="side-f">${deco.squig}<p class="script" style="font-size:30px;color:#E7B9C3">Pure &amp; light</p></div></aside>
   <div class="main"><div class="topbar"><span class="brand-m">轻盈日记</span><div><a href="#tips" class="icon-btn" aria-label="Tips">${ico(NAV[5][2])}</a><a href="#me" class="icon-btn" aria-label="我的">${ico(NAV[6][2])}</a></div></div>${S.DEMO?'<div class="demo-b">演示模式 · 数据只保存在本浏览器</div>':''}<main id="view" tabindex="-1"></main></div>
   <nav class="tabbar">${NAV.slice(0,5).map(([k,n,d])=>`<a href="#${k}" data-r="${k}">${ico(d)}<span>${n}</span></a>`).join('')}</nav>`;
 }
@@ -304,7 +304,7 @@ function render(){
   if(!S.db.profile){$('#view').innerHTML=profileForm(true);bindView();return}
   const v=views[route]?route:'home';
   $$('[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===v));
-  const el=$('#view');el.innerHTML=views[v]();el.classList.remove('enter');void el.offsetWidth;el.classList.add('enter');
+  const el=$('#view');el.dataset.route=v;el.innerHTML=views[v]();el.classList.remove('enter');void el.offsetWidth;el.classList.add('enter');
   bindView();
   if(v==='assistant'||v==='home')loadAdvice(v);
 }

@@ -305,3 +305,166 @@ form.busy{opacity:.6;pointer-events:none}
 @media (min-width:900px){#toast{bottom:32px}}
 @media (max-width:380px){.macros{gap:8px}.stats{grid-template-columns:1fr 1fr}.meal-mini{grid-template-columns:1fr 1fr}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* ===== v2 · 实色海报风（参考 VELVET TREAT 饼干）===== */
+@font-face{font-family:Script;src:url(fonts/script.woff2) format('woff2');font-display:swap}
+:root{--bg:#F5EFE6;--block:#E7DCCB;--blue:#CDD5DB;--wine:#9C3A50;--ink:#6B5144;--ink2:#9A8577;--line:transparent;--mint-d:#9CC9B4;--p:#9CC9B4;--f:#DDB98C;--c:#A9B9C6;--rose:#D58D9C;--sh:none}
+body{background:var(--bg);color:var(--ink)}
+.bg{display:none}
+.hz,.brand-m{color:var(--ink)}
+.muted{color:var(--ink2)}
+.en{color:var(--wine);opacity:1;letter-spacing:.28em}
+.script{font-family:Script,cursive;font-weight:400;color:var(--wine);text-transform:none;letter-spacing:0;line-height:1}
+/* 扁平：去掉玻璃/阴影/描边/装饰 */
+.card,.card.mint,.card.cream,.tip,.tip:nth-child(3n+2),.tip:nth-child(3n+3),.stat,.sum-strip,.card .sum-strip,.fl,.adv-i,.msg,.pick,.sheet-p,.icon-btn,.tabbar,.side{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
+.card{background:#FBF8F3;border-radius:28px;padding:24px 22px;margin-bottom:18px}
+.card.mint{background:var(--blue)}
+.card.cream{background:var(--block)}
+.card::after,.d-dots,.side-f .d-squig{display:none}
+.sec-h{margin-bottom:16px}.sec-h h2{font-size:21px}
+.sec-h .en{font-size:10.5px}
+.link{color:var(--wine);font-weight:600}
+.tip{background:#FBF8F3}.tip:nth-child(3n+2){background:var(--blue)}.tip:nth-child(3n+3){background:var(--block)}
+.tip h3,.tip-today h3{color:var(--ink);font-size:17px}.tip p,.tip-today p{color:#7E685B}
+.tip-n{color:var(--wine);font-size:24px}
+.pill{background:var(--wine);color:#fff}
+.stat{background:#FBF8F3;border-radius:22px;padding:14px 6px}
+.stat b{font-size:24px;color:var(--ink)}
+.sum-strip,.card .sum-strip{background:#FBF8F3;border-radius:22px}
+.card.mint .sum-strip,.card.cream .sum-strip{background:rgba(251,248,243,1)}
+.sum-strip div+div{border-left:0}
+.fl,.adv-i{background:#FBF8F3;border-left:0;border-radius:18px}
+.fl.warn,.adv-i.warn{background:#F3E1E1}
+.adv-i b,.fl b{color:var(--ink)}
+.msg{background:#FBF8F3}.msg.me{background:var(--wine);color:#fff}
+.chip{background:#FBF8F3;color:var(--wine);box-shadow:none;font-weight:600}
+.pill-b{background:#FBF8F3;color:var(--ink2)}.pill-b.on{background:var(--wine);color:#fff}
+.seg label span,.chk span{box-shadow:none;background:#FBF8F3}
+.seg input:checked+span,.chk input:checked+span{background:var(--wine)}
+.act span{background:#FBF8F3}.act input:checked+span{background:var(--wine);color:#fff;box-shadow:none}.act input:checked+span small{color:#F1D9DE}
+input,select{box-shadow:none;background:#FBF8F3}
+.card input,.card select{background:#fff}
+input:focus,select:focus{box-shadow:0 0 0 2px var(--wine)}
+.btn{background:var(--wine);box-shadow:none;letter-spacing:.06em}
+.btn.soft{background:#FBF8F3;color:var(--wine);box-shadow:none}
+.btn.ghost{background:transparent;color:var(--ink2);box-shadow:none;text-decoration:underline;text-underline-offset:3px}
+.btn.add{background:var(--ink);color:#fff;box-shadow:none}
+.icon-btn{background:#FBF8F3}
+.items li{border-bottom:1px solid rgba(107,81,68,.1)}
+.flist li{border-bottom:1px solid rgba(107,81,68,.08)}
+.bar{background:rgba(107,81,68,.1);box-shadow:none;height:8px}
+.bar i,.bar.p i,.bar.f i,.bar.c i,.bar.m i{background:var(--p)}
+.bar.f i{background:var(--f)}.bar.c i{background:var(--c)}.bar.w i{background:var(--wine)}.bar.m i{background:var(--ink)}
+.ring-bg{stroke:rgba(107,81,68,.1)}.ring-fg{stroke:var(--wine)!important}.ring-fg.over{stroke:var(--rose)!important}
+.ring-in b{color:var(--ink)}
+.wb-c{background:rgba(107,81,68,.08)}.wb-c i{background:var(--ink)}.wb-c i.over{background:var(--wine)}
+.cal span.on{background:var(--wine);color:#fff}.cal span.td{box-shadow:0 0 0 2px var(--ink) inset}
+.chart .ln{stroke:#C9B6A5}.chart .ma{stroke:var(--wine)}.chart .pt{stroke:var(--wine);fill:#FBF8F3}.chart .gl{stroke:rgba(107,81,68,.1)}
+.chart path[fill^="url"]{display:none}
+.lg-line.a{background:#C9B6A5}.lg-line.b{background:var(--wine)}
+.ticket{background:var(--wine);color:#fff;border:0;border-radius:3px;letter-spacing:.18em}
+.ticket::before,.ticket::after{background:var(--bg)}
+.card .ticket::before,.card .ticket::after{background:#FBF8F3}.card.cream .ticket::before,.card.cream .ticket::after{background:var(--block)}
+.biscuit .ticket::before,.biscuit .ticket::after{background:#F1E2C9}
+.sticker{background:var(--wine);box-shadow:none;transform:rotate(-6deg)}
+.demo-b{background:transparent;color:var(--ink2)}
+.mm{background:var(--bg);border-radius:20px}.mm b{color:var(--ink)}
+/* 布局：海报式页头 */
+.page-h{margin:22px 0 22px}
+.page-h .en{font-family:Script,cursive;font-size:44px;letter-spacing:0;text-transform:none;line-height:1;margin-bottom:-4px}
+.page-h h1{font-size:34px;line-height:1.2}
+.hero{position:relative;background:var(--blue);border-radius:32px;padding:26px 22px 70px;margin:8px 0 -52px;flex-wrap:wrap}
+.hero-s{position:absolute;right:22px;bottom:16px;font-size:48px}
+.hero h1.big{font-size:34px}
+.hero .ticket::before,.hero .ticket::after{background:var(--blue)}
+.hero+.bwrap{margin:0 10px 22px}
+/* 饼干：唯一的半透明烘焙质感 */
+.bwrap{filter:none}
+.biscuit{--s:12px;padding:28px 24px;background:
+ radial-gradient(circle,rgba(170,128,84,.28) 1.6px,transparent 2.2px) 50% 50%/28px 28px,
+ rgba(239,222,192,.78);
+ box-shadow:inset 0 0 0 9999px rgba(255,255,255,.0)}
+.biscuit::before{inset:13px;border:0;border-radius:16px;box-shadow:inset 0 0 0 2px rgba(190,150,105,.22)}
+.biscuit::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(196,150,100,.22))}
+.meal .biscuit{background:radial-gradient(circle,rgba(170,128,84,.22) 1.5px,transparent 2.1px) 50% 50%/28px 28px,rgba(239,222,192,.62)}
+.meal-h h3{font-size:24px}
+.biscuit .stat,.biscuit input{background:rgba(255,253,248,.85)}
+.water .bottle svg path[fill="#8E9AA6"]{fill:var(--ink)}
+/* 导航：实色 */
+.tabbar{background:var(--ink);border-radius:30px}
+.tabbar a{color:#CDBBAE}.tabbar a.on{background:var(--bg);color:var(--wine)}
+#toast{background:var(--ink)}
+.sheet-p{background:var(--bg)}.sheet-bg{background:rgba(107,81,68,.45);backdrop-filter:none;-webkit-backdrop-filter:none}
+@media (min-width:900px){
+ .side{background:var(--ink);border-right:0}
+ .side .brand-m{color:#F5EFE6}.side .en{color:#E7B9C3}
+ .side nav a{color:#CDBBAE}.side nav a:hover{background:rgba(245,239,230,.08)}
+ .side nav a.on{background:var(--bg);color:var(--wine)}
+ .side-f{color:#CDBBAE}
+ .main{padding:12px 48px 56px}
+ .hero{padding:40px 44px 90px;margin-bottom:-64px}
+ .hero h1.big{font-size:46px}.hero-s{font-size:72px;right:44px}
+ .hero+.bwrap{margin:0 36px 28px}
+ .page-h .en{font-size:60px}.page-h h1{font-size:44px}
+}
+.hero-s{position:static;order:3;width:100%;font-size:46px;margin:2px 0 0}
+@media (min-width:900px){.hero-s{font-size:64px}}
+.cal-l .c1{background:var(--wine)}
+
+/* ===== v3 · 清爽配色 ===== */
+:root{--bg:#FCFAF6;--block:#F6EEE1;--blue:#DCEBF6;--wine:#C24A63;--ink:#5F5149;--ink2:#827167;--mint-d:#8FD3B8;--p:#8FD3B8;--f:#EFC992;--c:#9CC6E6;--rose:#EE9AAB}
+.card{background:#FFFFFF}
+.tip{background:#FFFFFF}
+.stat,.sum-strip,.card .sum-strip,.fl,.adv-i,.msg,.chip,.pill-b,.seg label span,.chk span,.act span,.btn.soft,.icon-btn,.mm{background:#FFFFFF}
+.card.mint .sum-strip,.card.cream .sum-strip{background:#FFFFFF}
+.card .ticket::before,.card .ticket::after{background:#FFFFFF}
+.mm{background:var(--bg)}
+input,select{background:#F7F3EC}
+.fl.warn,.adv-i.warn{background:#FCE8EC}
+.btn.add{background:var(--wine)}
+.pill{background:#E3F4EC;color:#3F8A6C}
+.wb-c{background:#EEF4F8}.wb-c i{background:#9CC6E6}.wb-c i.over{background:var(--rose)}
+.bar{background:#EFEAE2}.bar.m i{background:var(--c)}
+.ring-bg{stroke:#EFE6D8}
+.tabbar{background:#FFFFFF}
+.tabbar a{color:var(--ink2)}.tabbar a.on{background:var(--blue);color:var(--wine)}
+#toast{background:var(--wine)}
+.sheet-bg{background:rgba(95,81,73,.3)}
+.biscuit{background:radial-gradient(circle,rgba(190,145,95,.26) 1.6px,transparent 2.2px) 50% 50%/28px 28px,rgba(246,230,203,.72)}
+.meal .biscuit{background:radial-gradient(circle,rgba(190,145,95,.2) 1.5px,transparent 2.1px) 50% 50%/28px 28px,rgba(246,232,208,.6)}
+.biscuit .ticket::before,.biscuit .ticket::after{background:#F5E8D2}
+.water .bottle svg path[fill="#8E9AA6"]{fill:var(--wine)}
+.chart .ln{stroke:#9CC6E6}
+@media (min-width:900px){
+ .side{background:var(--blue)}
+ .side .brand-m{color:var(--ink)}.side .en{color:var(--wine)}
+ .side nav a{color:var(--ink2)}.side nav a:hover{background:rgba(255,255,255,.6)}
+ .side nav a.on{background:#FFFFFF;color:var(--wine)}
+ .side-f .script{color:var(--wine)!important}
+}
+
+/* ===== v4 · 粉色强调 ===== */
+:root{--wine:#F08FAA;--pinkT:#E06F8F;--rose:#F7B8C8}
+.script,.page-h .en,.side-f .script{color:var(--pinkT)!important}
+.en,.link,.chip,.tabbar a.on,.side nav a.on,.tip-n,.btn.soft,.cal-l,.tgt{color:var(--ink)}
+.side .en,.sec-h .en,.page-h .en{color:var(--pinkT)}
+.sec-h .en,.side .en{color:var(--ink2)}
+.link::after{content:"";}
+.chart .tgt{fill:var(--pinkT)}
+.btn,.btn.add,.pill-b.on,.seg input:checked+span,.chk input:checked+span,.act input:checked+span,.msg.me,.ticket,.sticker,#toast,.cal span.on{background:var(--wine);color:#fff;font-weight:700}
+.act input:checked+span small{color:#fff}
+.err{color:var(--pinkT)}
+.tip-n{color:var(--wine)}
+
+/* ===== v5 · 实心饼干 ===== */
+.biscuit{background:radial-gradient(circle,#E6CFAE 1.6px,transparent 2.2px) 50% 50%/28px 28px,#F5E6CC}
+.meal .biscuit{background:radial-gradient(circle,#E8D3B4 1.5px,transparent 2.1px) 50% 50%/28px 28px,#F7EAD4}
+.biscuit::after{display:none}
+.biscuit::before{box-shadow:inset 0 0 0 2px #EAD7B9}
+.biscuit .stat,.biscuit input{background:#FFFDF8}
+.biscuit .ticket::before,.biscuit .ticket::after{background:#F5E6CC}
+
+.water .btn.soft{color:#4F86AE}
+.water .btn.ghost{color:var(--ink2)}
+.cal span i{background:#FFD12E;width:6px;height:6px;bottom:2px}
+.cal-l .c4{background:#FFD12E}
