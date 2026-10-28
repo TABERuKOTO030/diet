@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; worker-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>轻盈日记 · 减脂卡路里记录</title>
+<meta name="description" content="记录三餐、运动与体重，自动计算热量与营养">
+<meta name="theme-color" content="#F6EFE3">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preload" href="fonts/q-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/rr-cjk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<div id="app"><p class="loading">轻盈日记</p></div>
+<div id="sheet" hidden></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="config.js"></script>
+<script src="vendor/supabase.js"></script>
+<script src="foods.js"></script>
+<script src="tips.js"></script>
+<script src="store.js"></script>
+<script src="assistant.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
