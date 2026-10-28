@@ -1,4 +1,4 @@
-const V='diet-v5';
+const V='diet-v6';
 const ASSETS=['./','index.html','styles.css','config.js','app.js','store.js','assistant.js','foods.js','tips.js','vendor/supabase.js','fonts/q-latin.woff2','fonts/rr-cjk.woff2','fonts/script.woff2','manifest.json','icons/icon-192.png','icons/icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

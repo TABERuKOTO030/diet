@@ -425,7 +425,7 @@ input,select{background:#F7F3EC}
 .pill{background:#E3F4EC;color:#3F8A6C}
 .wb-c{background:#EEF4F8}.wb-c i{background:#9CC6E6}.wb-c i.over{background:var(--rose)}
 .bar{background:#EFEAE2}.bar.m i{background:var(--c)}
-.ring-bg{stroke:#EFE6D8}
+.ring-bg{stroke:#FFFCF7}
 .tabbar{background:#FFFFFF}
 .tabbar a{color:var(--ink2)}.tabbar a.on{background:var(--blue);color:var(--wine)}
 #toast{background:var(--wine)}
