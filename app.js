@@ -1,3 +1,4 @@
+window.NAG=window.Nag('diet');
 (function(){
 'use strict';
 const S=window.Store;const $=(s,el=document)=>el.querySelector(s);const $$=(s,el=document)=>[...el.querySelectorAll(s)];
@@ -232,6 +233,7 @@ function profileForm(first){
    <label class="full"><span>过敏 / 忌口</span><input name="allergy" maxlength="80" value="${esc(p.allergy||'')}" placeholder="例如：花生、虾"></label>`,'cream')}
   ${g?card(`${head('Targets','你的目标')}<div class="stats"><div class="stat"><small>基础代谢</small><b class="num">${g.bmr}</b><i>kcal</i></div><div class="stat"><small>TDEE</small><b class="num">${g.tdee}</b><i>kcal</i></div><div class="stat"><small>每日目标</small><b class="num">${g.kcal}</b><i>kcal</i></div><div class="stat"><small>蛋白质</small><b class="num">${g.protein}</b><i>g</i></div></div><p class="muted sm">Mifflin-St Jeor 公式估算。脂肪 ${g.fat}g · 碳水 ${g.carbs}g · 饮水 ${g.water}ml。${g.clamped?'已按安全下限 '+g.floor+' kcal 设定。':''}</p>`):''}
   <div class="form-a"><button class="btn big">${first?'开始记录':'保存资料'}</button></div></form>
+  ${first?'':card(`${head('Reminder','定点催促提醒')}<div id="nag-box"></div>`,'nag-card')}
   ${first?'':card(`${head('Account','账号与数据')}<p class="muted sm">${S.DEMO?'演示模式：数据只保存在本浏览器。':'云端同步状态：<b id="sync-s">'+syncLabel()+'</b>'}</p><div class="meal-a"><button class="btn ghost sm" data-export>导出数据</button>${S.DEMO?'':'<button class="btn ghost sm" data-sync>立即同步</button><button class="btn ghost sm" data-logout>退出登录</button>'}</div>
    <h3 class="sub">我的自定义食物</h3><ul class="items">${Object.values(S.db.foods).map(f=>`<li><div class="it-n"><b>${esc(f.name)}</b><small>${f.kcal} kcal/100g · ${esc(f.unit)} ${f.unitG}g</small></div><button class="x" data-delf="${esc(f.id)}" aria-label="删除">×</button></li>`).join('')||'<li class="empty">在添加食物时可以新建</li>'}</ul>`)}`;
 }
@@ -306,6 +308,7 @@ function render(){
   $$('[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===v));
   const el=$('#view');el.dataset.route=v;el.innerHTML=views[v]();el.classList.remove('enter');void el.offsetWidth;el.classList.add('enter');
   bindView();
+  if(v==='me'&&$('#nag-box'))window.NAG.mount($('#nag-box'),{title:'记饭催促',desc:'早中晚各弹一次，催你记食谱、管住嘴',what:'饮食',btn:'btn ghost sm',toast});
   if(v==='assistant'||v==='home')loadAdvice(v);
 }
 async function loadAdvice(v){
@@ -354,6 +357,6 @@ function authView(){
 }
 function start(){route=location.hash.slice(1)||'home';shell();render();S.on(()=>{if($('#sheet').hidden&&document.activeElement.tagName!=='INPUT')render()})}
 (async()=>{const s=await S.init().catch(()=>null);if(s)start();else authView()})();
-if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js').then(()=>window.NAG.sync()).catch(()=>{});
 window.__app={targets,dayTotals,trend,context};
 })();

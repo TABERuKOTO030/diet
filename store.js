@@ -59,7 +59,7 @@ const Store={
   sync,
   get db(){return db},
   setProfile(p){db.profile=Object.assign({},p);db.profileAt=now();save();enqueue('diet_profiles',{data:Object.assign({},db.profile,{_fav:db.fav}),updated_at:db.profileAt})},
-  addLog(day,kind,meal,data){const e={id:uuid(),day,kind,meal:meal||'',data,updated_at:now()};db.logs[e.id]=e;save();enqueue('diet_logs',{id:e.id,day,kind,meal:e.meal,data,deleted:false,updated_at:e.updated_at});return e},
+  addLog(day,kind,meal,data){if(kind==='food'&&window.NAG)window.NAG.touch();const e={id:uuid(),day,kind,meal:meal||'',data,updated_at:now()};db.logs[e.id]=e;save();enqueue('diet_logs',{id:e.id,day,kind,meal:e.meal,data,deleted:false,updated_at:e.updated_at});return e},
   updateLog(id,data){const e=db.logs[id];if(!e)return;e.data=data;e.updated_at=now();save();enqueue('diet_logs',{id,day:e.day,kind:e.kind,meal:e.meal,data,deleted:false,updated_at:e.updated_at})},
   delLog(id){const e=db.logs[id];if(!e)return;delete db.logs[id];save();enqueue('diet_logs',{id,day:e.day,kind:e.kind,meal:e.meal,data:e.data,deleted:true,updated_at:now()})},
   logsOn(day){return Object.values(db.logs).filter(l=>l.day===day)},
